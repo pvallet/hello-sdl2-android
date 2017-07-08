@@ -1,6 +1,6 @@
 package pvallet.com.github.hello_sdl2;
 
-import org.libsdl.app.SDLActivity; 
+import org.libsdl.app.SDLActivity;
 
 public class HelloSDL2Activity extends SDLActivity
 {
@@ -17,6 +17,7 @@ public class HelloSDL2Activity extends SDLActivity
     protected String[] getLibraries() {
         return new String[]{
                 "SDL2",
+                "SDL2_image",
                 "main"
         };
     }

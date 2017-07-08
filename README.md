@@ -3,6 +3,7 @@
 ## Synopsis
 
 This project is an update of the hello world project here https://github.com/stephen47/android-sdl2-gradle-template, as I couldn't find a good way to integrate a CMake built C++ project to an android application.
+It features a sample hello world using SDL and SDL_image.
 
 ## Requirements
 - JDK and JRE 8
@@ -11,20 +12,24 @@ This project is an update of the hello world project here https://github.com/ste
 
 ## Downloading dependencies
 
-Download the latest source release from the SDL website:
+Download the latest source release from SDL and SDL_image websites:
 
 https://www.libsdl.org/download-2.0.php
+https://www.libsdl.org/projects/SDL_image/
 
-Unzip it, put the SDL2 folder in external and rename it to SDL2 so your project folder should look like this:
+Unzip it, put the SDL2-x.x.x and SDL2_image-x.x.x folders in `external/SDL2` and rename them to SDL2 and SDL2_image so your project folder looks like this:
 ```
 + android
 + external
 | + SDL2
+| | + Android.mk
+| | | SDL2
+| | | SDL2_image
 ```
 
 Then copy the java interface SDLActivity to the android project:
 ```
-cp external/SDL2/android-project/src/org/libsdl/app/SDLActivity.java android/app/src/main/java/org/libsdl/app/
+cp external/SDL2/SDL2/android-project/src/org/libsdl/app/SDLActivity.java android/app/src/main/java/org/libsdl/app/
 ```
 
 There, it's done!
