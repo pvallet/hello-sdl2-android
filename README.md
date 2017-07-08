@@ -10,7 +10,17 @@ It features a sample hello world using SDL and SDL_image.
 - Android SDK and NDK (with Android Build-tools 26.0.0 and Android Platform API 25, though these are configurable)
 - ANDROID_HOME and ANDROID_NDK_HOME environment variables set (I did this in /etc/environment)
 
-## Downloading dependencies
+## Compiling the sample program
+
+You can download the dependencies (SDL2 and SDL2_image), compile your program and then install it on a connected device with the following commands:
+```
+./get_dependencies
+cd android
+./gradlew assembleDebug
+./gradlew installDebug
+```
+
+## Downloading dependencies manually
 
 Download the latest source release from SDL and SDL_image websites:
 
@@ -33,15 +43,6 @@ cp external/SDL2/SDL2/android-project/src/org/libsdl/app/SDLActivity.java androi
 ```
 
 There, it's done!
-
-## Compiling the sample program
-
-You can compile your program and then install it on a connected device with the following commands:
-```
-cd android
-./gradlew assembleDebug
-./gradlew installDebug
-```
 
 ## Thanks
 
