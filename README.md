@@ -10,7 +10,7 @@ It features a sample hello world using SDL and SDL_image.
 - Android SDK and NDK (with Android Build-tools 26.0.0 and Android Platform API 25, though these are configurable)
 - ANDROID_HOME and ANDROID_NDK_HOME environment variables set (I did this in /etc/environment)
 
-## Compiling the sample program
+## Compiling the sample program (command line)
 
 You can download the dependencies (SDL2 and SDL2_image), compile your program and then install it on a connected device with the following commands:
 ```
@@ -19,6 +19,10 @@ cd android
 ./gradlew assembleDebug
 ./gradlew installDebug
 ```
+
+## Compiling the sample program (Android Studio)
+
+As above, download the dependencies (SDL2 and SDL2_image), then open the ./android folder as an existing project in Android Studio:
 
 ## Downloading dependencies manually
 
@@ -35,11 +39,6 @@ Unzip it, put the SDL2-x.x.x and SDL2_image-x.x.x folders in `external/SDL2` and
 | | + Android.mk
 | | | SDL2
 | | | SDL2_image
-```
-
-Then copy the java interface SDLActivity to the android project:
-```
-cp external/SDL2/SDL2/android-project/src/org/libsdl/app/SDLActivity.java android/app/src/main/java/org/libsdl/app/
 ```
 
 There, it's done!
