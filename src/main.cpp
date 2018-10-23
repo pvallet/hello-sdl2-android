@@ -2,7 +2,7 @@
 #include <SDL_image.h>
 #include <stdio.h>
 
-int main(int argc, char* argv[]) {
+int main(int /*argc*/, char* /*argv*/[]) {
 
     SDL_Window *window;                    // Declare a pointer
 
