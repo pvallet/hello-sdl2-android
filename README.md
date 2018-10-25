@@ -7,7 +7,7 @@ It features a sample hello world using SDL and SDL_image.
 
 ## Requirements
 - JDK and JRE 8
-- Android SDK and NDK (with Android Build-tools 26.0.0 and Android Platform API 25, though these are configurable)
+- Android SDK and NDK (with Android Build-tools 28.0.3 and Android Platform API 28, though these are configurable)
 - ANDROID_HOME and ANDROID_NDK_HOME environment variables set (I did this in /etc/environment)
 
 ## Compiling the sample program (command line)
@@ -20,9 +20,9 @@ cd android
 ./gradlew installDebug
 ```
 
-## Compiling the sample program (Android Studio)
+## Compiling the sample program (Android Studio 3.2.1)
 
-As above, download the dependencies (SDL2 and SDL2_image), then open the ./android folder as an existing project in Android Studio:
+First download the dependencies (SDL2 and SDL2_image) as above or manually like below. Then open the ./android folder as an existing project in Android Studio.
 
 ## Downloading dependencies manually
 
