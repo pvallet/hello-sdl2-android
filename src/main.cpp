@@ -36,8 +36,6 @@ int main(int /*argc*/, char* /*argv*/[]) {
     // Clear winow
     SDL_RenderClear( renderer );
 
-    // bouyatest
-
     // Creat a rect at pos ( 50, 50 ) that's 50 pixels wide and 50 pixels high.
     SDL_Rect r;
     r.x = 50;
@@ -58,7 +56,7 @@ int main(int /*argc*/, char* /*argv*/[]) {
     // Render the rect to the screen
     SDL_RenderPresent(renderer);
 
-    SDL_Delay(8000);  // Pause execution for 3000 milliseconds, for example
+    SDL_Delay(20000); 
 
     // Close and destroy the window
     SDL_DestroyWindow(window);

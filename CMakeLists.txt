@@ -1,20 +1,30 @@
-cmake_minimum_required(VERSION 3.4.1)
+cmake_minimum_required(VERSION 3.14.7 FATAL_ERROR)
 
-string(TOLOWER ${CMAKE_BUILD_TYPE} ANDROID_BUILD_DIR)
-set(DISTRIBUTION_DIR ${CMAKE_SOURCE_DIR}/android/distribution/android/SDL2/intermediates/ndkBuild)
-set(SOURCE_FILES src/main.cpp)
-set(SDL_LOCATION ${CMAKE_SOURCE_DIR}/external/SDL2)
+include(FetchContent)
 
-add_library( SDL2 SHARED IMPORTED )
-add_library( SDL2_image SHARED IMPORTED )
-set_target_properties(SDL2 PROPERTIES IMPORTED_LOCATION
-${DISTRIBUTION_DIR}/${ANDROID_BUILD_DIR}/obj/local/${ANDROID_ABI}/libSDL2.so)
-set_target_properties(SDL2_image PROPERTIES IMPORTED_LOCATION
-${DISTRIBUTION_DIR}/${ANDROID_BUILD_DIR}/obj/local/${ANDROID_ABI}/libSDL2_image.so)
+FetchContent_Declare(
+  SDL
+  URL            https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.28.5.zip
+  SOURCE_DIR     ${CMAKE_SOURCE_DIR}/external/SDL2
+)
 
-include_directories(${SDL_LOCATION}/SDL2/include)
-include_directories(${SDL_LOCATION}/SDL2_image)
+FetchContent_Declare(
+  SDL_IMAGE
+  URL            https://github.com/libsdl-org/SDL_image/archive/release-2.8.1.zip
+  SOURCE_DIR     ${CMAKE_SOURCE_DIR}/external/SDL2_image
+)
 
-add_library( main SHARED ${SDL_LOCATION}/SDL2/src/main/android/SDL_android_main.c ${SOURCE_FILES} )
+FetchContent_MakeAvailable(SDL SDL_IMAGE)
+
+# Copying needed files for the android project
+set(SDL_ACTIVITY_FOLDER app/src/main/java/org/libsdl/app/)
+file(REMOVE_RECURSE ${CMAKE_SOURCE_DIR}/android/${SDL_ACTIVITY_FOLDER})
+file(COPY ${CMAKE_SOURCE_DIR}/external/SDL2/android-project/${SDL_ACTIVITY_FOLDER} DESTINATION ${CMAKE_SOURCE_DIR}/android/${SDL_ACTIVITY_FOLDER})
+file(REMOVE_RECURSE ${CMAKE_SOURCE_DIR}/android/app/src/main/assets/res)
+file(COPY ${CMAKE_SOURCE_DIR}/res DESTINATION ${CMAKE_SOURCE_DIR}/android/app/src/main/assets)
+
+set(SOURCE_FILES ${CMAKE_SOURCE_DIR}/src/main.cpp)
+
+add_library( main SHARED ${CMAKE_SOURCE_DIR}/external/SDL2/src/main/android/SDL_android_main.c ${SOURCE_FILES} )
 
 target_link_libraries( main SDL2 SDL2_image )
