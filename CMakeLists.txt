@@ -1,16 +1,18 @@
 cmake_minimum_required(VERSION 3.14.7 FATAL_ERROR)
 
+project(hello-sdl2-android)
+
 include(FetchContent)
 
 FetchContent_Declare(
   SDL
-  URL            https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.28.5.zip
+  URL            https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.30.8.zip
   SOURCE_DIR     ${CMAKE_SOURCE_DIR}/external/SDL2
 )
 
 FetchContent_Declare(
   SDL_IMAGE
-  URL            https://github.com/libsdl-org/SDL_image/archive/release-2.8.1.zip
+  URL            https://github.com/libsdl-org/SDL_image/archive/release-2.8.2.zip
   SOURCE_DIR     ${CMAKE_SOURCE_DIR}/external/SDL2_image
 )
 
