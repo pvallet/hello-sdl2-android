@@ -10,7 +10,6 @@
 .tags
 
 build/
-external/
 ignored/
 makebuild/
 
