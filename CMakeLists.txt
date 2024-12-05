@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14.7 FATAL_ERROR)
 cmake_policy(VERSION 3.14.7...3.28.1)
 
-project(hello-sdl2-android)
+project(hello-sdl2-android-ios)
 
 include(FetchContent)
 
