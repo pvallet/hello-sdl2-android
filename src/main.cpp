@@ -13,8 +13,8 @@ int main(int /*argc*/, char* /*argv*/[]) {
         "An SDL2 window",                  // window title
         SDL_WINDOWPOS_UNDEFINED,           // initial x position
         SDL_WINDOWPOS_UNDEFINED,           // initial y position
-        640,                               // width, in pixels
-        480,                               // height, in pixels
+        480,                               // width, in pixels
+        640,                               // height, in pixels
         SDL_WINDOW_OPENGL                  // flags - see below
     );
 
@@ -33,10 +33,10 @@ int main(int /*argc*/, char* /*argv*/[]) {
     // Set render color to red ( background will be rendered in this color )
     SDL_SetRenderDrawColor( renderer, 255, 0, 0, 255 );
 
-    // Clear winow
+    // Clear window
     SDL_RenderClear( renderer );
 
-    // Creat a rect at pos ( 50, 50 ) that's 50 pixels wide and 50 pixels high.
+    // Create a rect at pos ( 50, 50 ) that's 50 pixels wide and 50 pixels high.
     SDL_Rect r;
     r.x = 50;
     r.y = 50;
