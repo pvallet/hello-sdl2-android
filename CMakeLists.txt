@@ -26,11 +26,7 @@ file(COPY ${CMAKE_BINARY_DIR}/external/SDL2/android-project/${SDL_ACTIVITY_FOLDE
 file(REMOVE_RECURSE ${CMAKE_SOURCE_DIR}/android/app/src/main/assets/res)
 file(COPY ${CMAKE_SOURCE_DIR}/res DESTINATION ${CMAKE_SOURCE_DIR}/android/app/src/main/assets)
 
-if (ANDROID)
-  set(SOURCE_FILES ${CMAKE_SOURCE_DIR}/src/main.cpp ${CMAKE_BINARY_DIR}/external/SDL2/src/main/android/SDL_android_main.c)
-else()
-  set(SOURCE_FILES ${CMAKE_SOURCE_DIR}/src/main.cpp)
-endif()
+set(SOURCE_FILES ${CMAKE_SOURCE_DIR}/src/main.cpp)
 
 add_library( main SHARED ${SOURCE_FILES} )
 
