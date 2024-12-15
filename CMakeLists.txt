@@ -1,13 +1,21 @@
 cmake_minimum_required(VERSION 3.14.7 FATAL_ERROR)
 cmake_policy(VERSION 3.14.7...3.28.1)
 
-project(hello-sdl2-android-ios)
+set(PROJECT_NAME hello_sdl2)
+project(${PROJECT_NAME})
+
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+
+if (IOS)
+  # Disable ImageIO for SDL2_image as it's not available for iOS, just OS X, and will fail at link time
+  set(SDL2IMAGE_BACKEND_IMAGEIO 0)
+endif()
 
 include(FetchContent)
 
 FetchContent_Declare(
   SDL
-  URL            https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.30.8.zip
+  URL            https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.30.10.zip
   SOURCE_DIR     ${CMAKE_BINARY_DIR}/external/SDL2
 )
 
@@ -17,7 +25,23 @@ FetchContent_Declare(
   SOURCE_DIR     ${CMAKE_BINARY_DIR}/external/SDL2_image
 )
 
+# Only build the shared library for SDL2
+set(BUILD_SHARED_LIBS ON)
+set(SDL2_DISABLE_SDL2MAIN ON CACHE BOOL "" FORCE)
+set(SDL2_DISABLE_UNINSTALL ON CACHE BOOL "" FORCE)
+set(SDL_TEST_ENABLED_BY_DEFAULT OFF)
+
+# Make sure debug libs have the same name as release ones
+set(SDL_CMAKE_DEBUG_POSTFIX "")
+set(SDL2IMAGE_DEBUG_POSTFIX "")
+
 FetchContent_MakeAvailable(SDL SDL_IMAGE)
+
+# Making sure libraries don't generate symlinks
+set_property(TARGET SDL2 PROPERTY VERSION)
+set_property(TARGET SDL2 PROPERTY SOVERSION)
+set_property(TARGET SDL2_image PROPERTY VERSION)
+set_property(TARGET SDL2_image PROPERTY SOVERSION)
 
 # Copying needed files for the android project
 set(SDL_ACTIVITY_FOLDER app/src/main/java/org/libsdl/app/)
@@ -26,8 +50,27 @@ file(COPY ${CMAKE_BINARY_DIR}/external/SDL2/android-project/${SDL_ACTIVITY_FOLDE
 file(REMOVE_RECURSE ${CMAKE_SOURCE_DIR}/android/app/src/main/assets/res)
 file(COPY ${CMAKE_SOURCE_DIR}/res DESTINATION ${CMAKE_SOURCE_DIR}/android/app/src/main/assets)
 
-set(SOURCE_FILES ${CMAKE_SOURCE_DIR}/src/main.cpp)
+# Find sources recursively
+file(GLOB_RECURSE SOURCE_FILES "src/*.cpp")
+file(GLOB_RECURSE HEADER_FILES "src/*.h")
 
-add_library( main SHARED ${SOURCE_FILES} )
+# Add the folders with headers to the include path
+foreach (_headerFile ${HEADER_FILES})
+    get_filename_component(_dir ${_headerFile} PATH)
+    list (APPEND INCLUDE_DIRS ${_dir})
+endforeach()
 
-target_link_libraries( main SDL2 SDL2_image )
+include_directories(${INCLUDE_DIRS})
+
+if (IOS) 
+  # Remove main.cpp as it's manually added to the XCode project directly as the entry point
+  list(REMOVE_ITEM SOURCE_FILES ${CMAKE_SOURCE_DIR}/src/main.cpp)
+
+  add_library( ${PROJECT_NAME} SHARED ${SOURCE_FILES} )
+elseif(ANDROID)
+  add_library( ${PROJECT_NAME} SHARED ${SOURCE_FILES})
+else()
+  add_executable( ${PROJECT_NAME} ${SOURCE_FILES} )
+endif()
+
+target_link_libraries( ${PROJECT_NAME} SDL2 SDL2_image )

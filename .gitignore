@@ -10,6 +10,7 @@
 .tags
 
 build/
+build_ios/
 ignored/
 makebuild/
 
