@@ -27,9 +27,13 @@ FetchContent_Declare(
 
 # Only build the shared library for SDL2
 set(BUILD_SHARED_LIBS ON)
-set(SDL2_DISABLE_SDL2MAIN ON CACHE BOOL "" FORCE)
 set(SDL2_DISABLE_UNINSTALL ON CACHE BOOL "" FORCE)
 set(SDL_TEST_ENABLED_BY_DEFAULT OFF)
+
+# SDL main is only needed for desktop apps (more specifically Windows)
+if (IOS OR ANDROID)
+  set(SDL2_DISABLE_SDL2MAIN ON CACHE BOOL "" FORCE)
+endif()
 
 # Make sure debug libs have the same name as release ones
 set(SDL_CMAKE_DEBUG_POSTFIX "")
@@ -71,6 +75,7 @@ elseif(ANDROID)
   add_library( ${PROJECT_NAME} SHARED ${SOURCE_FILES})
 else()
   add_executable( ${PROJECT_NAME} ${SOURCE_FILES} )
+  target_link_libraries( ${PROJECT_NAME} SDL2main )
 endif()
 
 target_link_libraries( ${PROJECT_NAME} SDL2 SDL2_image )

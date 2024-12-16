@@ -29,3 +29,5 @@ cmake --build .
 cd ..
 ./build/hello_sdl2
 ```
+
+The binary might be under its specific configuration, like `build/Debug/hello_sdl2` or `build/Release/hello_sdl2`
