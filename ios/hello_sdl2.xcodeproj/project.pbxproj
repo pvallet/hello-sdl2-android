@@ -10,12 +10,12 @@
 		2556BB752D0C94A100FE92E8 /* SDL_uikit_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 2556BB742D0C94A100FE92E8 /* SDL_uikit_main.c */; };
 		2556BB772D0C94C200FE92E8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2556BB762D0C94C200FE92E8 /* main.cpp */; };
 		2556BB792D0C98D800FE92E8 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 2556BB782D0C98D700FE92E8 /* res */; };
-		25BD8C082D0F7E1A0097E73D /* libSDL2-2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 25BD8C072D0F7E1A0097E73D /* libSDL2-2.0.dylib */; };
-		25BD8C092D0F7EC20097E73D /* libSDL2-2.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 25BD8C072D0F7E1A0097E73D /* libSDL2-2.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		25BD8C082D0F7E1A0097E73D /* libSDL2-2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 25BD8C072D0F7E1A0097E73D /* libSDL2-2.0.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 		25BD8C0B2D0F898E0097E73D /* libSDL2_image-2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 25BD8C0A2D0F898D0097E73D /* libSDL2_image-2.0.dylib */; };
-		25BD8C0C2D0F898E0097E73D /* libSDL2_image-2.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 25BD8C0A2D0F898D0097E73D /* libSDL2_image-2.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		25BD8C0D2D11E0FB0097E73D /* libhello_sdl2.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 25C532E52D09F06100837DB5 /* libhello_sdl2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		25BD8C0E2D11E0FE0097E73D /* libSDL2_image-2.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 25BD8C0A2D0F898D0097E73D /* libSDL2_image-2.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		25BD8C0F2D11E1010097E73D /* libSDL2-2.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 25BD8C072D0F7E1A0097E73D /* libSDL2-2.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		25C532E62D09F06100837DB5 /* libhello_sdl2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C532E52D09F06100837DB5 /* libhello_sdl2.dylib */; };
-		25C532E72D09F29100837DB5 /* libhello_sdl2.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 25C532E52D09F06100837DB5 /* libhello_sdl2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,9 +25,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				25BD8C092D0F7EC20097E73D /* libSDL2-2.0.dylib in Embed Libraries */,
-				25BD8C0C2D0F898E0097E73D /* libSDL2_image-2.0.dylib in Embed Libraries */,
-				25C532E72D09F29100837DB5 /* libhello_sdl2.dylib in Embed Libraries */,
+				25BD8C0E2D11E0FE0097E73D /* libSDL2_image-2.0.dylib in Embed Libraries */,
+				25BD8C0F2D11E1010097E73D /* libSDL2-2.0.dylib in Embed Libraries */,
+				25BD8C0D2D11E0FB0097E73D /* libhello_sdl2.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;

@@ -36,8 +36,8 @@ if (IOS OR ANDROID)
 endif()
 
 # Make sure debug libs have the same name as release ones
-set(SDL_CMAKE_DEBUG_POSTFIX "")
-set(SDL2IMAGE_DEBUG_POSTFIX "")
+set(SDL_CMAKE_DEBUG_POSTFIX "" CACHE STRING "" FORCE)
+set(SDL2IMAGE_DEBUG_POSTFIX "" CACHE STRING "" FORCE)
 
 FetchContent_MakeAvailable(SDL SDL_IMAGE)
 
