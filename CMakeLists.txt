@@ -6,6 +6,13 @@ project(${PROJECT_NAME})
 
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
+# Make sure all configurations output libraries in the same directory instead of in sub-directories per config
+# This allows easier linking from the Xcode iOS project
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELWITHDEBINFO ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_MINSIZEREL ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
+
 if (IOS)
   # Disable ImageIO for SDL2_image as it's not available for iOS, just OS X, and will fail at link time
   set(SDL2IMAGE_BACKEND_IMAGEIO 0)
