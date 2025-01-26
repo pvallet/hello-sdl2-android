@@ -4,6 +4,8 @@ This is a simple bootstrap project to start using SDL in Android and iOS with CM
 
 The project's source code is split into different files to show how CMake can help support more complex code base structures.
 
+See a full OpenGL/SDL2 project using this hello world here https://github.com/pvallet/gourdin
+
 ## Android
 This project is an update of the hello world project here https://github.com/stephen47/android-sdl2-gradle-template, as I couldn't find a good way to integrate a CMake built C++ project to an android application.
 It features a sample hello world using SDL and SDL_image.
